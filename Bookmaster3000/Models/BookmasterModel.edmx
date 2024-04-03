@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Zinina.Darya.BookmasterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="40" />
+          <Property Name="Bio" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BirthDay" Type="date" Nullable="false" />
+          <Property Name="DeathDate" Type="date" />
+          <Property Name="Wikipedia" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstPublishDate" Type="date" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Cover" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bookAuthor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_bookAuthor_author">
+          <End Role="author" Type="Self.author" Multiplicity="1" />
+          <End Role="bookAuthor" Type="Self.bookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bookAuthor">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bookAuthor_book">
+          <End Role="book" Type="Self.book" Multiplicity="1" />
+          <End Role="bookAuthor" Type="Self.bookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bookAuthor">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ZininaDaryaBookmasterModelContainer">
+          <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bookAuthor" EntityType="Self.bookAuthor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_bookAuthor_author" Association="Self.FK_bookAuthor_author">
+            <End Role="author" EntitySet="author" />
+            <End Role="bookAuthor" EntitySet="bookAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bookAuthor_book" Association="Self.FK_bookAuthor_book">
+            <End Role="book" EntitySet="book" />
+            <End Role="bookAuthor" EntitySet="bookAuthor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Zinina.Darya.BookmasterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BookmasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="author" EntityType="Zinina.Darya.BookmasterModel.author" />
+          <EntitySet Name="book" EntityType="Zinina.Darya.BookmasterModel.book" />
+          <EntitySet Name="bookAuthor" EntityType="Zinina.Darya.BookmasterModel.bookAuthor" />
+          <AssociationSet Name="FK_bookAuthor_author" Association="Zinina.Darya.BookmasterModel.FK_bookAuthor_author">
+            <End Role="author" EntitySet="author" />
+            <End Role="bookAuthor" EntitySet="bookAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bookAuthor_book" Association="Zinina.Darya.BookmasterModel.FK_bookAuthor_book">
+            <End Role="book" EntitySet="book" />
+            <End Role="bookAuthor" EntitySet="bookAuthor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Bio" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeathDate" Type="DateTime" Precision="0" />
+          <Property Name="Wikipedia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bookAuthor" Relationship="Zinina.Darya.BookmasterModel.FK_bookAuthor_author" FromRole="author" ToRole="bookAuthor" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstPublishDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cover" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bookAuthor" Relationship="Zinina.Darya.BookmasterModel.FK_bookAuthor_book" FromRole="book" ToRole="bookAuthor" />
+        </EntityType>
+        <EntityType Name="bookAuthor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="author" Relationship="Zinina.Darya.BookmasterModel.FK_bookAuthor_author" FromRole="bookAuthor" ToRole="author" />
+          <NavigationProperty Name="book" Relationship="Zinina.Darya.BookmasterModel.FK_bookAuthor_book" FromRole="bookAuthor" ToRole="book" />
+        </EntityType>
+        <Association Name="FK_bookAuthor_author">
+          <End Type="Zinina.Darya.BookmasterModel.author" Role="author" Multiplicity="1" />
+          <End Type="Zinina.Darya.BookmasterModel.bookAuthor" Role="bookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bookAuthor">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bookAuthor_book">
+          <End Type="Zinina.Darya.BookmasterModel.book" Role="book" Multiplicity="1" />
+          <End Type="Zinina.Darya.BookmasterModel.bookAuthor" Role="bookAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bookAuthor">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ZininaDaryaBookmasterModelContainer" CdmEntityContainer="BookmasterEntities">
+          <EntitySetMapping Name="author">
+            <EntityTypeMapping TypeName="Zinina.Darya.BookmasterModel.author">
+              <MappingFragment StoreEntitySet="author">
+                <ScalarProperty Name="Wikipedia" ColumnName="Wikipedia" />
+                <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="book">
+            <EntityTypeMapping TypeName="Zinina.Darya.BookmasterModel.book">
+              <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FirstPublishDate" ColumnName="FirstPublishDate" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookAuthor">
+            <EntityTypeMapping TypeName="Zinina.Darya.BookmasterModel.bookAuthor">
+              <MappingFragment StoreEntitySet="bookAuthor">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

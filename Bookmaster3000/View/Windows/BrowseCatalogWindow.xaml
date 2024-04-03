@@ -5,8 +5,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bookmaster3000.View.Windows"
         mc:Ignorable="d"
-        Title="BrowseCatalogWindow" Height="450" Width="800">
+         Title="Bookmaster3000"
+        MinHeight="720" MinWidth="1200"
+        MaxHeight="1080" MaxWidth="1920"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!--== Меню==-->
+        <Menu>
+            <!--== Элементы меню==-->
+            <MenuItem Header="File">
+                <MenuItem Header="Login"/>
+                <MenuItem Header="Logout" Visibility="Collapsed"/>
+                <MenuItem Name="ExitMI" Header="Close" Click="ExitMI_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Library">
+                <MenuItem Header="Manage Customers"/>
+                <MenuItem Header="Circulation"/>
+                <MenuItem Header="Reports"/>
+            </MenuItem>
+        </Menu>
+
+        <!--== Контентная часть ==-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!--== Панель поиска ==-->
+            <Grid Grid.RowSpan="3"
+                  Margin="20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.ColumnSpan="3" Source="/Resources/Images/logo.png" />
+                <TextBlock Text="Title" Grid.Row="1" Grid.Column="0" />
+                <TextBlock Text="Author" Grid.Row="3" Grid.Column="0" />
+                <Button Click="Button_Click" Content="Search" Grid.Row="5" Grid.Column="2"/>
+                <TextBox Grid.Row="1" Grid.Column="3"/>
+                <TextBox Grid.Row="3" Grid.Column="3"/>
+            </Grid>
+
+            <!--== Результаты поиска ==-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <!-- Переводим LV в таличный вид. -->
+
+                <ListView Name="BookAuthorLv">
+                    <ListView.View>
+
+                        <GridView>
+                            <!-- Создаем столбцы Title и Author. -->
+                            <GridViewColumn Header="Title"
+                                    DisplayMemberBinding="{Binding book.Title}"/>
+                            <GridViewColumn Header="Author"
+                                    DisplayMemberBinding="{Binding author.Fio}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Grid Grid.Row="1" Margin="10 ">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Page"/>
+                    <Button Content="&lt;" Grid.Column="2"/>
+                    <TextBox Text="1" Grid.Column="4" HorizontalContentAlignment="Center"/>
+                    <Button Content="&gt;" Grid.Column="6"/>
+                    <TextBlock Text="of 4" Grid.Column="8" />
+                    <TextBlock Name="CountOfPagesTbl" Text="{Binding Count, StringFormat={}{0} books found}" Grid.Column="10"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="48.28" />
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Boaty McBoatface" Grid.Row="1" Grid.Column="0" FontSize="25" FontWeight="Bold"/>
+                <TextBlock Text="by Byron Barton" Grid.Row="3" Grid.Column="0" Foreground="#FF3B45DC" />
+                <TextBlock Text="first published: 2016" Grid.Row="4" Grid.Column="0"/>
+                <TextBlock Text="Description" Grid.Row="6" Grid.Column="0" FontWeight="Bold"/>
+                <TextBlock Text="Boaty McBoatface - learn more about the adventurous travels of the polar research vessel" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap"/>
+                <Image Source="/Resources/Images/booklogo.jpg" Grid.Column="1" Grid.RowSpan="11"/>
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

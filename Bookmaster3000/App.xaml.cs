@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookmaster3000.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace Bookmaster3000
     /// </summary>
     public partial class App : Application
     {
+        public static BookmasterEntities context = new BookmasterEntities();
     }
 }

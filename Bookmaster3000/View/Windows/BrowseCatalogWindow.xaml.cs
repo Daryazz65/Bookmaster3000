@@ -22,6 +22,21 @@ namespace Bookmaster3000.View.Windows
         public BrowseCatalogWindow()
         {
             InitializeComponent();
+
+            // Загружаем данные из бд в ЛВ.
+            BookAuthorLv.ItemsSource = App.context.bookAuthor.ToList();
+
+            CountOfPagesTbl.DataContext = App.context.book.ToList();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExitMI_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

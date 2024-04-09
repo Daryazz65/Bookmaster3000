@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookmaster3000.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,15 @@ namespace Bookmaster3000.View.Windows
 
         private void ExitMI_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+        // Событие SelectionChange отслеживает изменение выбора элемента в списке.
+        private void BookAuthorLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Передача информации из выбранного элемента.
+            // 1) Добавляем в контекст данных выбранный элемент из списка ListView.
+            BookDetailsGrid.DataContext = BookAuthorLv.SelectedItem as bookAuthor;
+            // 2) В XAML-коде реализовываем привязку данных.
 
         }
     }

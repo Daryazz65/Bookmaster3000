@@ -82,10 +82,22 @@
                     <ListView.View>
                         <GridView>
                             <!-- Создаем столбцы Title и Author. -->
-                            <GridViewColumn Header="Title"
-                                    DisplayMemberBinding="{Binding book.Title}"/>
-                            <GridViewColumn Header="Author"
-                                    DisplayMemberBinding="{Binding author.Fio}"/>
+                            <GridViewColumn Header="Title" DisplayMemberBinding="{Binding book.Title}"/>
+                            <GridViewColumn Header="Author">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                    <Binding Path="author.LastName"/>
+                                                    <Binding Path="author.FirstName"/>
+                                                    <Binding Path="author.MiddleName"/>
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -132,16 +144,25 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="2" Text="{Binding author.Fio}">
-                    
-                    <Hyperlink>
-                        
+
+                <TextBlock Name="titleTbl" FontSize="25" FontWeight="Bold" Text="{Binding book.Title}"/>
+                <TextBlock Name="authorTbl" Grid.Row="2">
+                    <Hyperlink Click="Hyperlink_Click">
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="author.LastName"/>
+                                    <Binding Path="author.FirstName"/>
+                                    <Binding Path="author.MiddleName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock Text="Description" Grid.Row="6" Grid.Column="0" FontWeight="Bold"/>
-                <TextBlock Name="dateOfPublishTbl" Grid.Row="4" Text="{Binding Book.FirstPublishDate.Year, StringFormat=Дата публикации: {0}}"/>
+                <TextBlock Name="dateOfPublishTbl" Grid.Row="4" Text="{Binding book.FirstPublishDate.Year, StringFormat=Дата публикации: {0}}"/>
                 <TextBlock Name="desTbl" FontWeight="SemiBold" Text="Description" Grid.Row="6" Visibility="Collapsed"/>
-                <TextBlock Name="descriptionTbl" Text="{Binding Book.Description}" Grid.Row="8" TextWrapping="WrapWithOverflow"/>
+                <TextBlock Name="descriptionTbl" Text="{Binding book.Description}" Grid.Row="8" TextWrapping="WrapWithOverflow"/>
                 <Image Source="{Binding book.Cover}" Grid.Column="1" Grid.RowSpan="10" Width="250"/>
 
 

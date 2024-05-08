@@ -88,6 +88,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookmasterModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\BookAuthorsDetails.xaml.cs">
+      <DependentUpon>BookAuthorsDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BrowseCatalogWindow.xaml.cs">
       <DependentUpon>BrowseCatalogWindow.xaml</DependentUpon>
     </Compile>
@@ -111,11 +114,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\PasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\TextBlockStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\BookAuthorsDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

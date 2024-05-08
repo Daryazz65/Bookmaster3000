@@ -33,15 +33,6 @@ namespace Bookmaster3000.View.Windows
             LogoutMi.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ExitMI_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         // Событие SelectionChange отслеживает изменение выбора элемента в списке.
         private void BookAuthorLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -84,6 +75,22 @@ namespace Bookmaster3000.View.Windows
         {
             ReportsWindow reportsWindow = new ReportsWindow();
             reportsWindow.Show();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExitMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            bookAuthor selectedBookAuthor = BookAuthorLv.SelectedItem as bookAuthor;
+            BookAuthorsDetails bookAuthorsDetails = new BookAuthorsDetails(selectedBookAuthor);
+            bookAuthorsDetails.ShowDialog();
         }
     }
 }

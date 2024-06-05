@@ -24,10 +24,8 @@ namespace Bookmaster3000.View.Windows
         {
             InitializeComponent();
             AuthorsGrid.DataContext = selectedBookAuthor;
-            AuthorCmb.ItemsSource = App.context.author.ToList();
-            AuthorCmb.SelectedItem = selectedBookAuthor.author;
-            AuthorCmb.DisplayMemberPath = "FullName";
-        }
+            AuthorCmb.ItemsSource = App.context.bookAuthor.Where(ba => ba.BookId == selectedBookAuthor.BookId).ToList();
+                    }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {

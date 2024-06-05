@@ -23,5 +23,25 @@ namespace Bookmaster3000.View.Windows
         {
             InitializeComponent();
         }
+
+        private void EnterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (LoginTb.Text == "administrator")
+            {
+                if (PasswordTb.Password == "admin123")
+                {
+                    DialogResult = true;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("неправильно введен пароль!!!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("пользователь с данными данными не найден!! !");
+            }
+        }
     }
 }

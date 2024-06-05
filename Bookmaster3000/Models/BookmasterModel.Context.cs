@@ -28,5 +28,6 @@ namespace Bookmaster3000.Models
         public virtual DbSet<author> author { get; set; }
         public virtual DbSet<book> book { get; set; }
         public virtual DbSet<bookAuthor> bookAuthor { get; set; }
+        public virtual DbSet<client> client { get; set; }
     }
 }

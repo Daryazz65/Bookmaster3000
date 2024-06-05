@@ -37,6 +37,17 @@
           <Property Name="BookId" Type="int" Nullable="false" />
           <Property Name="AuthorId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <Association Name="FK_bookAuthor_author">
           <End Role="author" Type="Self.author" Multiplicity="1" />
           <End Role="bookAuthor" Type="Self.bookAuthor" Multiplicity="*" />
@@ -65,6 +76,7 @@
           <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bookAuthor" EntityType="Self.bookAuthor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_bookAuthor_author" Association="Self.FK_bookAuthor_author">
             <End Role="author" EntitySet="author" />
             <End Role="bookAuthor" EntitySet="bookAuthor" />
@@ -90,6 +102,7 @@
             <End Role="book" EntitySet="book" />
             <End Role="bookAuthor" EntitySet="bookAuthor" />
           </AssociationSet>
+          <EntitySet Name="client" EntityType="Zinina.Darya.BookmasterModel.client" />
         </EntityContainer>
         <EntityType Name="author">
           <Key>
@@ -151,6 +164,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -189,6 +213,18 @@
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="Zinina.Darya.BookmasterModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

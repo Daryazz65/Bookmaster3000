@@ -88,6 +88,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookmasterModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\client.cs">
+      <DependentUpon>BookmasterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\BookAuthorsDetails.xaml.cs">
       <DependentUpon>BookAuthorsDetails.xaml</DependentUpon>
     </Compile>

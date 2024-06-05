@@ -9,7 +9,7 @@
     <Grid Margin="20" Name="AuthorsGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="20" />
@@ -21,7 +21,21 @@
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
-        <ComboBox Name="AuthorCmb" SelectionChanged="AuthorCmb_SelectionChanged"/>
+        <ComboBox Name="AuthorCmb" SelectionChanged="AuthorCmb_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="author.LastName"/>
+                                <Binding Path="author.FirstName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>    
+        </ComboBox>
+        
         <TextBlock Text="{Binding Author.BirthDay}" Grid.Row="2"/>
         <TextBlock Text="Bio" Grid.Row="4"/>
         <TextBlock Text="{Binding Author.Bio}" Grid.Row="6"/>

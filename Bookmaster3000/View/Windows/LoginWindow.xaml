@@ -27,7 +27,7 @@
         <TextBlock Text="Username" Grid.Column="1" Grid.Row="1"/>
         <TextBlock Text="Password" Grid.Column="1" Grid.Row="3"/>
         <TextBox Name="LoginTb" Grid.Row="1" Grid.Column="2"/>
-        <PasswordBox Name="PasswordTb" Grid.Row="3" Grid.Column="2"/>
-        <Button Name="EnterBtn" Content="Войти" Grid.Row="5" Grid.Column="1"/>
+        <PasswordBox Name="PasswordTb" Grid.Row="3" Grid.Column="2" PasswordChar="*"/>
+        <Button Click="EnterBtn_Click" Name="EnterBtn" Content="Войти" Grid.Row="5" Grid.Column="2"/>
     </Grid>
 </Window>

@@ -160,7 +160,7 @@
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock Text="Description" Grid.Row="6" Grid.Column="0" FontWeight="Bold"/>
-                <TextBlock Name="dateOfPublishTbl" Grid.Row="4" Text="{Binding book.FirstPublishDate.Year, StringFormat=Дата публикации: {0}}"/>
+                <TextBlock Name="dateOfPublishTbl" Grid.Row="4" Text="{Binding book.FirstPublishDate.Year, StringFormat = Дата публикации: {0}}"/>
                 <TextBlock Name="desTbl" FontWeight="SemiBold" Text="Description" Grid.Row="6" Visibility="Collapsed"/>
                 <TextBlock Name="descriptionTbl" Text="{Binding book.Description}" Grid.Row="8" TextWrapping="WrapWithOverflow"/>
                 <Image Source="{Binding book.Cover}" Grid.Column="1" Grid.RowSpan="10" Width="250"/>

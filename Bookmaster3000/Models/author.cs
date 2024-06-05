@@ -24,10 +24,6 @@ namespace Bookmaster3000.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public string Fio
-        {
-            get { return FirstName + " " + LastName + " " + MiddleName; }
-        }
         public string Bio { get; set; }
         public System.DateTime BirthDay { get; set; }
         public Nullable<System.DateTime> DeathDate { get; set; }

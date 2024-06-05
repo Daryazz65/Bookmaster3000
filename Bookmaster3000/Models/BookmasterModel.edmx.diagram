@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="Zinina.Darya.BookmasterModel.bookAuthor" Width="1.5" PointX="8" PointY="0.875" />
         <AssociationConnector Association="Zinina.Darya.BookmasterModel.FK_bookAuthor_author" />
         <AssociationConnector Association="Zinina.Darya.BookmasterModel.FK_bookAuthor_book" />
+        <EntityTypeShape EntityType="Zinina.Darya.BookmasterModel.client" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
